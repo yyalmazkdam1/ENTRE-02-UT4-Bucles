@@ -1,17 +1,18 @@
+import java.util.Random;
 /**
- *    @author - 
+ *    @author - Yumurdzhan Yalmaz
  */
 public class DemoBucles
 {
     private final char ASTERISCO = '*';
     private final char ESPACIO = ' ';
-
+    private Random generador;
     /**
      * Constructor  
      */
     public DemoBucles()
     {
-       
+        generador = new Random();
     }
 
     /**
@@ -26,9 +27,11 @@ public class DemoBucles
      *  Usa bucles while
      */
     public int mayorPotencia2(int numero) {
-        
-        return 0;
-
+        int valor = 2;
+        while (valor * 2 < numero) {
+            valor *= 2;
+        }
+        return valor;
     }
 
     /**
@@ -47,10 +50,16 @@ public class DemoBucles
      *  64 =    64
      */
     public void escribirSumaPotencias(int numero) {
-
-         
-
-    }
+         while (numero > 0) {
+            System.out.println(String.format("%6d=",numero));
+         }
+         while (numero > 0) {
+            System.out.println(String.format("%6d",mayorPotencia2(numero)));
+            numero -= mayorPotencia2(numero);
+         }
+         System.out.println();      
+        }
+    
 
     /**
      * Generar aleatorios entre 0 y 255
@@ -64,19 +73,37 @@ public class DemoBucles
      * 
      */
     public void generarAleatorios(int n) {
+        
+        // int aleatorio = generador.nextInt(255);
+        // int contador = 1;
+        // while (contador <= n && aleatorio!= 0) {
+        // System.out.print(String.format("%6d |", aleatorio));
+        // int factor = 2;
+        // int aux = aleatorio;
+        // while (factor * 2 < aux) {
+        // factor *= 2;
+        // if (aux % factor == 0)
+        // }
+        // }
+        // System.out.println();
 
-       
-
+        // contador++;
+        // }
     }
 
     /**
-     *  Escribe en pantalla caracter n veces en la misma línes
-     *  
-     *  Usa bucles for
-     */
-    public void escribirCaracter(int n, char caracter)
-    {
-         
+         *  Escribe en pantalla caracter n veces en la misma línes
+         *  
+         *  Usa bucles for
+         */
+        public void escribirCaracter(int n, char caracter)
+        {
+        for (int fila = 1; fila <= n; fila++)    {
+            for (int col = 1; col <= n; col++)    {
+                System.out.print(String.format("%2c", caracter));
+            }
+            System.out.println();
+        }
     }
 
     /**
@@ -86,10 +113,17 @@ public class DemoBucles
      *   Usa bucles for
      */
     public  void mostrarEscalera(int escalones, int alto, int ancho) {
-        System.out.println();
+        for (int esca = 1; esca <= escalones; esca++) {
+            for (int altura = 1; altura <= alto; altura++){
+                for (int anchura = 1; anchura <= ancho; anchura++){
+                    System.out.print(String.format("%2c",ASTERISCO));
 
-         
+                }
+                System.out.println(ESPACIO);
+            }
+
+        }
 
     }
-
 }
+
